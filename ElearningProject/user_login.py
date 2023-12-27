@@ -62,3 +62,8 @@ def DO_LOGIN(request):
         else:
             messages.warning(request, 'Invalid Email or password.')
             return redirect('login')
+        
+        
+
+def PROFILE(request):
+    return render(request, 'registration/profile.html')

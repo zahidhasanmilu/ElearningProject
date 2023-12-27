@@ -22,6 +22,7 @@ urlpatterns = [
     #####user_login
     path('accounts/register/', user_login.REGISTER, name='register' ),
     path('doLogin/', user_login.DO_LOGIN, name='dologin' ),
+    path('accounts/profile/', user_login.PROFILE, name='profile' ),
     
     path('accounts/', include('django.contrib.auth.urls')),
     
