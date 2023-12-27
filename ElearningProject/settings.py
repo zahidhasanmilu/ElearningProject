@@ -42,8 +42,14 @@ INSTALLED_APPS = [
 ]
 CUSTOME_APPS = [
     'e_app',
+    
+    'crispy_forms',
+'crispy_bootstrap5',  # Forgetting this was probably your error
 ]
 INSTALLED_APPS = INSTALLED_APPS + CUSTOME_APPS
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -141,8 +147,12 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 
 
-EMAIL_USE_TLS = True
+# settings.py
+PASSWORD_RESET_USE_EMAIL = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'khadiza20.rimi@gmail.com'
-EMAIL_HOST_PASSWORD = '#Nagini20'
+EMAIL_PORT = 587  # or the port your SMTP server requires
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'minions.milu889@gmail.com'
+EMAIL_HOST_PASSWORD = 'hoei sqok hlhm mpmm'
