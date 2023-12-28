@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 
 # forms
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm,UserChangeForm
+from .forms import CustomUserChangeForm
 
 # models
 from django.contrib.auth.models import User
@@ -67,3 +68,20 @@ def DO_LOGIN(request):
 
 def PROFILE(request):
     return render(request, 'registration/profile.html')
+
+
+def PROFILE_UPDATE(request):
+    current_user = request.user
+    form = CustomUserChangeForm(instance=current_user)
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=current_user)
+        if form.is_valid():
+            form.save()
+            # form = UserChangeForm(request.POST, instance=current_user)
+            messages.success(request, 'Profile update Succesful')
+            return redirect('profile')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'registration/profile.html', context)
